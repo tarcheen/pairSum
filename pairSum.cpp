@@ -14,11 +14,12 @@ Note: you are not allowed to use the brute force way to calculate the pair since
 
 using std::vector;
 
-vector<std::pair<int,int> > get_pairs(const int* arr, const int size, const int total)
+vector<std::pair<int,int>> get_pairs(const int* arr, const int&& size, const int& total)
 {
 
     std::unordered_map<int,int> myHash;
     vector<std::pair<int,int> > pairs;
+
     for (int i = 0; i < total; i++)
     {
         int result = total - arr[i];
@@ -42,7 +43,10 @@ int main(void)
     int arr[] = {1 ,5 ,7 ,-1 ,50 };
     int total = 6;
 
-    auto answer = get_pairs(arr, sizeof(arr[0]),total);
+
+
+
+    auto answer = get_pairs(arr, std::move(sizeof(arr[0])), total);
 
     for(auto& x : answer)
     {
